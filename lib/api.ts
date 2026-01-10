@@ -98,7 +98,8 @@ export async function startResearch(leadId: string) {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to start research");
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.detail || "Failed to start research");
   }
 
   revalidatePath("/leads");
