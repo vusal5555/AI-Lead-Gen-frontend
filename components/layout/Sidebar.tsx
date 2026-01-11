@@ -15,7 +15,7 @@ const navItems = [
 const Sidebar = (props: Props) => {
   const path = usePathname();
   return (
-    <aside className="w-64 h-screen bg-muted/10 text-white">
+    <aside className="w-64  bg-muted/10 text-white">
       <div className="mb-10">
         <h1 className="text-4xl font-bold p-3">Lead Gen</h1>
       </div>
