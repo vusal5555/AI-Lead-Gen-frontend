@@ -33,10 +33,12 @@ const LeadsClient = (props: Props) => {
 
   return (
     <div className="p-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold mb-4">Leads</h1>
-          <p className="text-gray-600">Your leads will appear here</p>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            Leads
+          </h1>
+          <p className="text-muted-foreground">Manage and track your leads</p>
         </div>
 
         <div className="flex justify-end">

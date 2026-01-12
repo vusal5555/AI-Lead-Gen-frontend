@@ -11,7 +11,7 @@ export default function RootLayout({
       <div>
         <div className="flex min-h-screen">
           <Sidebar></Sidebar>
-          <main className="flex-1 w-full overflow-y-auto bg-background">
+          <main className="flex-1 w-full overflow-y-auto bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
             <DashboardLayout>{children}</DashboardLayout>
           </main>
         </div>

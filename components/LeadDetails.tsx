@@ -146,19 +146,21 @@ export default function LeadDetails({ lead, reports }: Props) {
     <div>
       {/* Back button */}
       <Link href="/leads">
-        <Button variant="ghost" className="mb-4">
+        <Button variant="ghost" className="mb-4 hover:text-indigo-500">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Leads
         </Button>
       </Link>
 
       {/* Header Card */}
-      <Card className="mb-6">
+      <Card className="mb-6 hover:shadow-lg transition-all duration-300">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <CardTitle className="text-2xl">{lead.name}</CardTitle>
+                <CardTitle className="text-2xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  {lead.name}
+                </CardTitle>
                 <LeadStatusBadge status={status} score={lead.score} />
               </div>
               <p className="text-muted-foreground">{lead.company_name}</p>
@@ -167,7 +169,7 @@ export default function LeadDetails({ lead, reports }: Props) {
             {/* Score Badge */}
             {status === "qualified" && lead.score && (
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600">
+                <div className="text-3xl font-bold text-green-500">
                   {lead.score}
                 </div>
                 <div className="text-sm text-muted-foreground">Score</div>
@@ -180,10 +182,10 @@ export default function LeadDetails({ lead, reports }: Props) {
           {/* Contact Info */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-muted-foreground" />
+              <Mail className="w-4 h-4 text-indigo-500" />
               <a
                 href={`mailto:${lead.email}`}
-                className="text-blue-600 hover:underline"
+                className="text-indigo-500 hover:text-indigo-600 hover:underline"
               >
                 {lead.email}
               </a>
@@ -191,12 +193,12 @@ export default function LeadDetails({ lead, reports }: Props) {
 
             {lead.company_website && (
               <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-muted-foreground" />
+                <Globe className="w-4 h-4 text-purple-500" />
                 <Link
                   href={lead.company_website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className="text-purple-500 hover:text-purple-600 hover:underline"
                 >
                   Website
                 </Link>
@@ -205,12 +207,12 @@ export default function LeadDetails({ lead, reports }: Props) {
 
             {lead.linkedin_url && (
               <div className="flex items-center gap-2">
-                <Linkedin className="w-4 h-4 text-muted-foreground" />
+                <Linkedin className="w-4 h-4 text-blue-500" />
                 <Link
                   href={lead.linkedin_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-500 hover:text-blue-600 hover:underline"
                 >
                   LinkedIn
                 </Link>
@@ -223,7 +225,7 @@ export default function LeadDetails({ lead, reports }: Props) {
             <Button
               onClick={handleResearch}
               disabled={loading}
-              className="mt-4"
+              className="mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
             >
               {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
               {loading ? "Researching..." : "Start Research"}
@@ -232,7 +234,7 @@ export default function LeadDetails({ lead, reports }: Props) {
 
           {/* Researching Status */}
           {status === "researching" && (
-            <div className="mt-4 p-3 rounded-lg bg-blue-50 text-blue-700 flex items-center gap-2">
+            <div className="mt-4 p-3 rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
               <Loader2 className="w-4 h-4 animate-spin" />
               Research in progress...
             </div>
@@ -242,7 +244,7 @@ export default function LeadDetails({ lead, reports }: Props) {
 
       {/* Reports Section */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">
+        <h2 className="text-xl font-semibold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
           Reports ({reports.reports.length})
         </h2>
 
@@ -263,11 +265,13 @@ export default function LeadDetails({ lead, reports }: Props) {
               <AccordionItem
                 key={type}
                 value={type}
-                className="border rounded-lg px-4"
+                className="border rounded-lg px-4 hover:border-indigo-500/50 transition-colors"
               >
                 <AccordionTrigger className="hover:no-underline">
                   <div className="flex items-center gap-2">
-                    {reportIcons[type] || <FileText className="w-4 h-4" />}
+                    <span className="text-indigo-500">
+                      {reportIcons[type] || <FileText className="w-4 h-4" />}
+                    </span>
                     <span className="font-medium">{type}</span>
                     <span className="text-muted-foreground text-sm">
                       ({typeReports.length})

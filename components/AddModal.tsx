@@ -80,19 +80,21 @@ export default function AddModal({ onLeadCreated }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="flex items-center gap-2 cursor-pointer">
-          <Plus size={16} />
+        <Button className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700">
+          <Plus className="w-4 h-4 mr-2" />
           Add Lead
         </Button>
       </DialogTrigger>
 
-      <DialogContent>
+      <DialogContent className="sm:max-w-[425px] bg-slate-900">
         <DialogHeader>
-          <DialogTitle>Add a New Lead</DialogTitle>
+          <DialogTitle className="text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            Add New Lead
+          </DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="name"
@@ -100,7 +102,7 @@ export default function AddModal({ onLeadCreated }: Props) {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter name" {...field} />
+                    <Input placeholder="John Doe" {...field} className="focus-visible:ring-indigo-500" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -113,7 +115,7 @@ export default function AddModal({ onLeadCreated }: Props) {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter email" {...field} />
+                    <Input placeholder="john@company.com" {...field} className="focus-visible:ring-indigo-500" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -124,9 +126,9 @@ export default function AddModal({ onLeadCreated }: Props) {
               name="company_name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Company Name</FormLabel>
+                  <FormLabel>Company</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter company name" {...field} />
+                    <Input placeholder="Acme Inc" {...field} className="focus-visible:ring-indigo-500" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -137,9 +139,9 @@ export default function AddModal({ onLeadCreated }: Props) {
               name="company_website"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Company Website</FormLabel>
+                  <FormLabel>Website (optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter company website" {...field} />
+                    <Input placeholder="https://company.com" {...field} className="focus-visible:ring-indigo-500" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -150,16 +152,20 @@ export default function AddModal({ onLeadCreated }: Props) {
               name="linkedin_url"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>LinkedIn URL</FormLabel>
+                  <FormLabel>LinkedIn URL (optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter LinkedIn URL" {...field} />
+                    <Input placeholder="https://linkedin.com/in/..." {...field} className="focus-visible:ring-indigo-500" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button disabled={loading} type="submit" className="cursor-pointer">
-              Submit
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
+            >
+              {loading ? "Creating..." : "Create Lead"}
             </Button>
           </form>
         </Form>

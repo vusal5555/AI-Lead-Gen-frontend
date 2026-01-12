@@ -1,4 +1,3 @@
-// src/components/LeadsPieChart.tsx
 "use client";
 
 import {
@@ -20,8 +19,8 @@ type Props = {
 };
 
 const COLORS = {
-  new: "#6b7280",
-  researching: "#eab308",
+  new: "#64748b",
+  researching: "#6366f1",
   qualified: "#22c55e",
   not_qualified: "#ef4444",
 };
@@ -66,7 +65,13 @@ export default function LeadsPieChart({ stats }: Props) {
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
         </Pie>
-        <Tooltip />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: 'hsl(var(--card))',
+            border: '1px solid hsl(var(--border))',
+            borderRadius: '8px'
+          }}
+        />
         <Legend />
       </PieChart>
     </ResponsiveContainer>

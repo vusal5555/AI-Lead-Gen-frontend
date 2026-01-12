@@ -22,32 +22,32 @@ type StatusConfig = {
 const statusConfig: Record<Status, StatusConfig> = {
   new: {
     label: "New",
-    className: "bg-gray-100 text-gray-800",
+    className: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
     variant: "secondary",
   },
   researching: {
     label: "Researching...",
-    className: "bg-blue-100 text-blue-800",
-    variant: "default",
+    className: "bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+    variant: "outline",
   },
   qualified: {
     label: "Qualified",
-    className: "bg-green-100 text-green-800",
-    variant: "default",
+    className: "bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-600 dark:text-green-400 border-green-500/30",
+    variant: "outline",
   },
   not_qualified: {
     label: "Not Qualified",
-    className: "bg-red-100 text-red-800",
+    className: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
     variant: "destructive",
   },
   outreach_ready: {
     label: "Outreach Ready",
-    className: "bg-yellow-100 text-yellow-800",
+    className: "bg-gradient-to-r from-purple-500/10 to-pink-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30",
     variant: "outline",
   },
 };
 
-const LeadStatusBdge = ({ status, score }: Props) => {
+const LeadStatusBadge = ({ status, score }: Props) => {
   const config = statusConfig[status];
   return (
     <Badge variant={config.variant} className={config.className}>
@@ -57,4 +57,4 @@ const LeadStatusBdge = ({ status, score }: Props) => {
   );
 };
 
-export default LeadStatusBdge;
+export default LeadStatusBadge;

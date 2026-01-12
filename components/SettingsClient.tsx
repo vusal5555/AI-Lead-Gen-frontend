@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff, Save, Key } from "lucide-react";
-import { set } from "zod";
 
 type Props = {};
 
@@ -32,31 +31,29 @@ const SettingsClient = (props: Props) => {
 
   const [loading, setLoading] = useState(false);
 
-  const toggleShowKey = async () => {
-    // TODO: Save to backend or environment
-    setLoading(true);
-
-    // Simulate save
+  const toggleShowKey = (key: "serper" | "rapidapi" | "gemini") => {
     setShowKeys({
       ...showKeys,
-      serper: !showKeys.serper,
+      [key]: !showKeys[key],
     });
-
-    setLoading(false);
   };
 
   return (
     <div className="p-6 max-w-2xl">
-      <h1 className="text-2xl font-bold mb-2">Settings</h1>
-      <p className="text-muted-foreground mb-6">
-        Manage your API keys and preferences
-      </p>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+          Settings
+        </h1>
+        <p className="text-muted-foreground">
+          Configure your API keys and preferences
+        </p>
+      </div>
 
       {/* API Keys Card */}
-      <Card>
+      <Card className="hover:shadow-lg transition-all duration-300">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Key className="w-5 h-5" />
+            <Key className="w-5 h-5 text-indigo-500" />
             API Keys
           </CardTitle>
           <CardDescription>
@@ -74,13 +71,15 @@ const SettingsClient = (props: Props) => {
                   value={keys.serper}
                   onChange={(e) => setKeys({ ...keys, serper: e.target.value })}
                   placeholder="Enter your Serper API key"
+                  className="focus-visible:ring-indigo-500"
                 />
               </div>
               <Button
                 type="button"
                 variant="outline"
                 size="icon"
-                onClick={() => toggleShowKey()}
+                onClick={() => toggleShowKey("serper")}
+                className="hover:border-indigo-500 hover:text-indigo-500"
               >
                 {showKeys.serper ? (
                   <EyeOff className="w-4 h-4" />
@@ -94,7 +93,7 @@ const SettingsClient = (props: Props) => {
               <a
                 href="https://serper.dev"
                 target="_blank"
-                className="text-blue-600 hover:underline"
+                className="text-indigo-500 hover:text-indigo-600 hover:underline"
               >
                 serper.dev
               </a>
@@ -113,13 +112,15 @@ const SettingsClient = (props: Props) => {
                     setKeys({ ...keys, rapidapi: e.target.value })
                   }
                   placeholder="Enter your RapidAPI key"
+                  className="focus-visible:ring-indigo-500"
                 />
               </div>
               <Button
                 type="button"
                 variant="outline"
                 size="icon"
-                onClick={() => toggleShowKey()}
+                onClick={() => toggleShowKey("rapidapi")}
+                className="hover:border-indigo-500 hover:text-indigo-500"
               >
                 {showKeys.rapidapi ? (
                   <EyeOff className="w-4 h-4" />
@@ -133,7 +134,7 @@ const SettingsClient = (props: Props) => {
               <a
                 href="https://rapidapi.com"
                 target="_blank"
-                className="text-blue-600 hover:underline"
+                className="text-indigo-500 hover:text-indigo-600 hover:underline"
               >
                 rapidapi.com
               </a>
@@ -150,13 +151,15 @@ const SettingsClient = (props: Props) => {
                   value={keys.gemini}
                   onChange={(e) => setKeys({ ...keys, gemini: e.target.value })}
                   placeholder="Enter your Gemini key"
+                  className="focus-visible:ring-indigo-500"
                 />
               </div>
               <Button
                 type="button"
                 variant="outline"
                 size="icon"
-                onClick={() => toggleShowKey()}
+                onClick={() => toggleShowKey("gemini")}
+                className="hover:border-indigo-500 hover:text-indigo-500"
               >
                 {showKeys.gemini ? (
                   <EyeOff className="w-4 h-4" />
@@ -168,16 +171,22 @@ const SettingsClient = (props: Props) => {
             <p className="text-xs text-muted-foreground">
               Get your key from{" "}
               <a
-                href="https://gemini.com"
+                href="https://makersuite.google.com/app/apikey"
                 target="_blank"
-                className="text-blue-600 hover:underline"
+                className="text-indigo-500 hover:text-indigo-600 hover:underline"
               >
-                gemini.com
+                Google AI Studio
               </a>
             </p>
           </div>
 
           {/* Save Button */}
+          <Button
+            className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 mt-4"
+          >
+            <Save className="w-4 h-4 mr-2" />
+            Save Settings
+          </Button>
         </CardContent>
       </Card>
     </div>
