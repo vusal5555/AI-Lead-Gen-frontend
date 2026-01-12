@@ -21,3 +21,13 @@ export type Report = {
   is_markdown: boolean;
   created_at: string;
 };
+
+export type LeadStats = {
+  total: number;
+  new: number;
+  researching: number;
+  qualified: number;
+  not_qualified: number;
+  average_score: number;
+  conversion_rate: number;
+};

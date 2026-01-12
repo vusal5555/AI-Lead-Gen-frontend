@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 type Props = {};
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/leads", label: "Leads", icon: Users },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
