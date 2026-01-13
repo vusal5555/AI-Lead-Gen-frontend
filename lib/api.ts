@@ -9,6 +9,7 @@ export async function getLeads() {
   const response = await fetch(`${API_URL}/api/leads`, {
     method: "GET",
     cache: "force-cache",
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {
@@ -24,6 +25,7 @@ export async function getLeadById(id: string) {
   const response = await fetch(`${API_URL}/api/leads/${id}`, {
     method: "GET",
     cache: "force-cache",
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {
@@ -37,6 +39,7 @@ export async function getLeadById(id: string) {
 export async function getReports(leadId: string) {
   const response = await fetch(`${API_URL}/api/research/reports/${leadId}`, {
     cache: "force-cache",
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {
@@ -116,6 +119,7 @@ export async function getLeadStats(): Promise<LeadStats> {
   const response = await fetch(`${API_URL}/api/leads/stats`, {
     method: "GET",
     cache: "force-cache",
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {
@@ -138,6 +142,7 @@ export async function getLeadStats(): Promise<LeadStats> {
 export async function getRecentLeads(limit: number = 5): Promise<Lead[]> {
   const response = await fetch(`${API_URL}/api/leads?limit=${limit}`, {
     cache: "force-cache",
+    next: { revalidate: 30 },
   });
 
   if (!response.ok) {

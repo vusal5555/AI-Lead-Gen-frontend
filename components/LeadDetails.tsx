@@ -33,6 +33,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from "sonner";
 
 // Lazy load the heavy MarkdownContent component
 const MarkdownContent = lazy(() =>
@@ -134,6 +135,7 @@ export default function LeadDetails({ lead, reports }: Props) {
       setStatus("researching");
       await startResearch(lead.id);
       window.location.reload();
+      toast.success("Research started successfully");
     } catch (error) {
       console.error("Failed to start research:", error);
       setStatus(lead.status);

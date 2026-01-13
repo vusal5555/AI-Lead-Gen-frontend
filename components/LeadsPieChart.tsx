@@ -67,9 +67,16 @@ export default function LeadsPieChart({ stats }: Props) {
         </Pie>
         <Tooltip
           contentStyle={{
-            backgroundColor: 'hsl(var(--card))',
-            border: '1px solid hsl(var(--border))',
-            borderRadius: '8px'
+            color: "#ffffff",
+            backgroundColor: "hsl(var(--card))",
+            border: "1px solid hsl(var(--border))",
+            borderRadius: "8px",
+          }}
+          itemStyle={{
+            color: "#ffffff",
+          }}
+          labelStyle={{
+            color: "#ffffff",
           }}
         />
         <Legend />

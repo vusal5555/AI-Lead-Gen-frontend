@@ -36,7 +36,6 @@ export default async function DashboardPage() {
   try {
     stats = await getLeadStats();
 
-    console.log("Fetched stats:", stats);
     recentLeads = await getRecentLeads();
   } catch (error) {
     console.error("Failed to fetch stats:", error);
@@ -57,10 +56,12 @@ export default async function DashboardPage() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Dashboard
           </h1>
-          <p className="text-muted-foreground mt-1">Welcome back! Here's your lead overview.</p>
+          <p className="text-muted-foreground mt-1">
+            Welcome back! Here's your lead overview.
+          </p>
         </div>
         <Link href="/leads">
-          <Button className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700">
+          <Button className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 cursor-pointer">
             <Plus className="w-4 h-4 mr-2" />
             Add Lead
           </Button>
@@ -146,13 +147,19 @@ export default async function DashboardPage() {
             <p className="text-sm text-muted-foreground mb-3">Quick Actions</p>
             <div className="flex gap-2">
               <Link href="/leads" className="flex-1">
-                <Button variant="outline" className="w-full hover:border-indigo-500 hover:text-indigo-500">
+                <Button
+                  variant="outline"
+                  className="w-full hover:border-indigo-500 hover:text-indigo-500"
+                >
                   <Users className="w-4 h-4 mr-2" />
                   All Leads
                 </Button>
               </Link>
               <Link href="/settings" className="flex-1">
-                <Button variant="outline" className="w-full hover:border-purple-500 hover:text-purple-500">
+                <Button
+                  variant="outline"
+                  className="w-full hover:border-purple-500 hover:text-purple-500"
+                >
                   <Settings className="w-4 h-4 mr-2" />
                   Settings
                 </Button>
@@ -218,7 +225,11 @@ export default async function DashboardPage() {
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Recent Leads</CardTitle>
             <Link href="/leads">
-              <Button variant="ghost" size="sm" className="text-indigo-500 hover:text-indigo-600">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-indigo-500 hover:text-indigo-600"
+              >
                 View All
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

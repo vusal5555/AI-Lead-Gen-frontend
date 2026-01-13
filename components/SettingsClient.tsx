@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff, Save, Key } from "lucide-react";
+import { toast } from "sonner";
 
 type Props = {};
 
@@ -36,6 +37,21 @@ const SettingsClient = (props: Props) => {
       ...showKeys,
       [key]: !showKeys[key],
     });
+  };
+
+  const handleSave = async () => {
+    setLoading(true);
+
+    try {
+      // Save logic here
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      toast.success("Settings saved successfully!");
+    } catch (error) {
+      toast.error("Failed to save settings");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -181,9 +197,7 @@ const SettingsClient = (props: Props) => {
           </div>
 
           {/* Save Button */}
-          <Button
-            className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 mt-4"
-          >
+          <Button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 mt-4">
             <Save className="w-4 h-4 mr-2" />
             Save Settings
           </Button>

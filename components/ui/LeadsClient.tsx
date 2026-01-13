@@ -5,6 +5,7 @@ import LeadsTable from "../LeadsTable";
 import { Lead } from "@/types";
 import AddModal from "../AddModal";
 import { deleteLead } from "@/lib/api";
+import { toast } from "sonner";
 
 type Props = {
   leadsData: Lead[];
@@ -22,6 +23,7 @@ const LeadsClient = (props: Props) => {
     try {
       await deleteLead(id);
       setLeads((prevLeads) => prevLeads.filter((lead) => lead.id !== id));
+      toast.success("Lead deleted successfully");
     } catch (error) {
       console.error("Failed to delete lead:", error);
     }
