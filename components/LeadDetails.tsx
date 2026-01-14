@@ -227,7 +227,7 @@ export default function LeadDetails({ lead, reports }: Props) {
             <Button
               onClick={handleResearch}
               disabled={loading}
-              className="mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
+              className="mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white cursor-pointer"
             >
               {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
               {loading ? "Researching..." : "Start Research"}
