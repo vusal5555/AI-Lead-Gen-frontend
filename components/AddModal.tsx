@@ -185,7 +185,7 @@ export default function AddModal({ onLeadCreated }: Props) {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 cursor-pointer"
+              className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 cursor-pointer text-white"
             >
               {loading ? "Creating..." : "Create Lead"}
             </Button>

@@ -18,17 +18,10 @@ import { useState, useMemo } from "react";
 
 type Props = {
   leads: Lead[];
-  selectedId: string | null;
-  onSelectLead: (id: string) => void;
   onDeleteLead: (id: string) => void;
 };
 
-const LeadsTable = ({
-  leads,
-  selectedId,
-  onSelectLead,
-  onDeleteLead,
-}: Props) => {
+const LeadsTable = ({ leads, onDeleteLead }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredLeads = useMemo(() => {
@@ -78,12 +71,7 @@ const LeadsTable = ({
                   {filteredLeads.map((lead) => (
                     <TableRow
                       key={lead.id}
-                      onClick={() => onSelectLead(lead.id)}
-                      className={`cursor-pointer ${
-                        selectedId === lead.id
-                          ? "bg-muted/50"
-                          : "hover:bg-muted/30"
-                      }`}
+                      className="cursor-pointer hover:bg-transparent"
                     >
                       <TableCell>{lead.name}</TableCell>
                       <TableCell>{lead.email}</TableCell>

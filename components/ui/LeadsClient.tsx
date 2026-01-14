@@ -13,11 +13,6 @@ type Props = {
 
 const LeadsClient = (props: Props) => {
   const [leads, setLeads] = React.useState<Lead[]>(props.leadsData);
-  const [selectedId, setSelectedId] = React.useState<string | null>(null);
-
-  const handleSelectLead = (id: string) => {
-    setSelectedId(id === selectedId ? null : id);
-  };
 
   const handleDeleteLead = async (id: string) => {
     try {
@@ -48,12 +43,7 @@ const LeadsClient = (props: Props) => {
         </div>
       </div>
 
-      <LeadsTable
-        leads={leads}
-        selectedId={selectedId}
-        onSelectLead={handleSelectLead}
-        onDeleteLead={handleDeleteLead}
-      />
+      <LeadsTable leads={leads} onDeleteLead={handleDeleteLead} />
     </div>
   );
 };

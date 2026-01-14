@@ -76,7 +76,7 @@ const ReportItem = memo(function ReportItem({
   isVisible: boolean;
 }) {
   return (
-    <div className="p-4 bg-muted/30 rounded-lg">
+    <div className="p-4  rounded-lg">
       <h4 className="font-medium mb-2">{report.title}</h4>
       <div className="text-sm text-muted-foreground whitespace-pre-wrap">
         {isVisible ? (

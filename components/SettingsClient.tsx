@@ -197,7 +197,7 @@ const SettingsClient = (props: Props) => {
           </div>
 
           {/* Save Button */}
-          <Button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 mt-4">
+          <Button className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 mt-4 text-white cursor-pointer">
             <Save className="w-4 h-4 mr-2" />
             Save Settings
           </Button>
